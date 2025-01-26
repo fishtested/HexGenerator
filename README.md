@@ -1,6 +1,6 @@
 # HexGenerator
 
-A simple page that automatically generates a random hexadecimal color code. It works offline and is so lightweight, you can use it with a QR code!
+A simple page that automatically generates a random hexadecimal color code. It works offline and is so lightweight, you can use it with a QR code! No external scripts or resources.
 
 ## How to use it
 1. Load the page.
