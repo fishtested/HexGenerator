@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HexGenerator</title>
+    <script>
+        let color = '#';
+        let button;
+        document.addEventListener('DOMContentLoaded', () => {
+            generateHex();
+            button = document.getElementById("generate")
+        });
+
+        function generateHex() {
+            let characters = "0123456789ABCDEF";
+            color = '#'; // reset
+            for (let i = 0; i < 6; i++) 
+            color += characters[(Math.floor(Math.random() * 16))];
+            document.getElementById('generated').innerHTML = `${color}`;
+            document.body.style.backgroundColor = `${color}`;
+        }
+
+        function copy() {
+            navigator.clipboard.writeText(color);
+            console.log("Copied", color)
+            alert("Copied!");
+        }
+
+        function buttonbg() {
+            button.style.backgroundColor = `${color}`;
+        }
+
+        function resetbg() {
+            button.style.backgroundColor = `#000000`;
+        }
+    </script>
+    <style>
+        * {
+            transition: background-color 0.7s ease;
+            font-family: sans-serif;
+        }
+        #main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #container {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;      
+        }
+        button {
+            background-color: #000000;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border: 3px solid #000000;
+            text-shadow: -2px 0px #000, 0px 2px #000, 2px 0px #000, 0px -2px #000;
+        }
+        #title {
+            font-weight: lighter;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="container">
+            <h1 id="title">HexGenerator</h1>
+    <h1 id="generated" onclick="copy()"></h1>
+    <button onmouseover="buttonbg()" onmouseleave="resetbg()" onclick="generateHex()" id="generate">Generate</button>
+</div>
+    </div>
+</body>
+</html>
